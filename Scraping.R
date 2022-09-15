@@ -7,6 +7,8 @@ library(tidyverse)
 library(readr)
 
 
+Date <- Sys.Date()
+
 url <- ("https://listado.mercadolibre.com.uy/iphone-13#D[A:iphone%2013]") %>%
   read_html()
 
@@ -19,6 +21,6 @@ Price <- html_nodes(url, '.ui-search-price__second-line .price-tag-text-sr-only'
 Link <- html_nodes(url, '.ui-search-result__image a') %>%
   html_attr("href")
 
-data <- data.frame(Titles, Price, Link) %>%
-  write_excel_csv(file = "C:\\Users\\jeano\\OneDrive\\Escritorio\\WebScrapingfoo.csv")
+data <- data.frame(Date, Titles, Price, Link) %>%
+  write_excel_csv(file = "C:\\Users\\jeano\\OneDrive\\Escritorio\\WebScraping\\foo.csv")
 
